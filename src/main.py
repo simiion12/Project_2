@@ -1,5 +1,7 @@
 from fastapi import FastAPI
-from src.routes import router as router_users
+
+from src.routes.user_routes import router as router_users
+from src.routes.todo_routes import router as router_todo
 from src.database import Base, engine
 
 # uvicorn.run(app, host="127.0.0.1", port=8000, workers=1)
@@ -13,3 +15,4 @@ Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
 app.include_router(router_users)
+app.include_router(router_todo)
